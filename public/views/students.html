@@ -1,0 +1,27 @@
+
+<div class="table-responsive">
+<table class="table table-bordered" style="background-color: #fff;">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Student Name</th>
+      <th scope="col">Rno</th>
+      <th scope="col">Branch</th>
+      <th scope="col">Percentage</th>
+      <th scope="col">placed</th>
+      <th scope="col">Company</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat=" student in data">
+      <th scope="row">{{$index+1}}</th>
+      <td>{{student.studentName|uppercase}}</td>
+      <td>{{student.regNumber}}</td>
+      <td>{{student.branch}}</td>
+      <td>{{student.current}}</td>
+      <td>{{student.placed}}</td>
+      <td>{{student.company}}</td>
+    </tr>
+  </tbody>
+</table>
+</div>

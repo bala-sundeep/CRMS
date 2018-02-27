@@ -1,0 +1,27 @@
+
+<div class="table-responsive">
+<table class="table table-bordered" style="background-color: #fff;">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Company</th>
+      <th scope="col">CTC</th>
+      <th scope="col">Interview Date</th>
+      <th scope="col">Bond</th>
+      <th scope="col">Domain</th>
+      <th scope="col">Location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat=" company in data">
+      <th scope="row">{{$index+1}}</th>
+      <td>{{company.companyName|uppercase}}</td>
+      <td>{{company.CTC|currency:'₹ '}}</td>
+      <td>{{company.DOI}}</td>
+      <td>{{company.bondPeriod + ' years'}}</td>
+      <td>{{company.domain}}</td>
+      <td>{{company.companyLoc}}</td>
+    </tr>
+  </tbody>
+</table>
+</div>

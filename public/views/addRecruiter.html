@@ -1,0 +1,70 @@
+<form class="form-horizontal">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Company Name:</label>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" id="email" placeholder="Company Name:" name="name" ng-model="c.name">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">CTC:</label>
+      <div class="col-sm-8">          
+        <input type="text" class="form-control" id="pwd" placeholder="CTC" name="ctc" ng-model="c.ctc">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Location:</label>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" id="email" placeholder="Location" name="location" ng-model="c.location">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Bond Period:</label>
+      <div class="col-sm-8">          
+        <input type="text" class="form-control" id="pwd" placeholder="Bond Period" name="bPeriod" ng-model="c.bPeriod">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Interview Date:</label>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" id="email" placeholder="Interview Date" name="doi" ng-model="c.doi">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Joining Date:</label>
+      <div class="col-sm-8">          
+        <input type="text" class="form-control" id="pwd" placeholder="Joining Date" name="doj" ng-model="c.doj">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Domain:</label>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" id="email" placeholder="Domain" name="domian" ng-model="c.domain">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Exam Pattern:</label>
+      <div class="col-sm-8">          
+        <input type="text" class="form-control" id="pwd" placeholder="Enter Exam Pattern" name="pattern" ng-model="c.pattern">
+      </div>
+    </div>
+     <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Year:</label>
+      <div class="col-sm-8">          
+        <input type="text" class="form-control" id="pwd" placeholder="year" name="year" ng-model="c.year">
+      </div>
+    </div>
+     <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">About Company:</label>
+      <div class="col-sm-8">          
+        <textarea class="form-control" id="pwd" placeholder="Enter about company" name="about" ng-model="c.about"></textarea>
+      </div>
+    </div>
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-8">
+        <button  ng-click="addCompany(c)" class="btn btn-default">Submit</button>
+      </div>
+    </div>
+    <div ng-show="(addRmsg.length!=0?true:false)" class="alert alert-success">
+    <strong>{{addRmsg}}</strong>
+    </div>
+  </form>
