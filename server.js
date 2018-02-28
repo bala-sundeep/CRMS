@@ -14,7 +14,11 @@ app.use(bodyParser.json({}));
 
 app.get('/index',function(req,res){
 	res.sendFile(__dirname+'\\public\\views\\index.html');
-})
+});
+app.get('/logout',function(req,res){
+	res.clearCookie("mytok");
+	res.sendStatus(200);
+});
 // custom config
 var company = require('./app/company-crud');
 var student = require('./app/student-crud');
