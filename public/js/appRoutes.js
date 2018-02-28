@@ -32,6 +32,10 @@ angular.module('appRoutes',[])
 		controller : 'studentCtrl'
 		
 	})
+	.when('/profile',{
+		templateUrl:'views/profile.html',
+		controller:'profileCtrl'
+	})
 	.when('/logout',{
 		templateUrl: 'views/logout.html',
 		controller: 'logoutCtrl'

@@ -116,7 +116,18 @@ router.delete('/delete/:id',function(req,res){
 });
 
 router.get('/logout',function(req,res){
-	console.log(req.cookie);
+	console.log(req.cookies);
+	res.sendStatus(200);
+});
+router.get('/myProfile',function(req,res){
+console.log(req.cookies);
+var d=jwt.decode(req.cookies.mytok,config.secret);
+Student.findOne({regNumber:d.admin},function(err,docs){
+//	console.log(d.admin);
+	//console.log(docs);
+res.json(docs);
+});
+
 });
 
 
