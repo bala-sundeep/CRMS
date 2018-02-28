@@ -115,5 +115,9 @@ router.delete('/delete/:id',function(req,res){
 	});
 });
 
+router.get('/logout',function(req,res){
+	console.log(req.cookie);
+});
+
 
 module.exports = router;

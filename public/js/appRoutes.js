@@ -33,8 +33,8 @@ angular.module('appRoutes',[])
 		
 	})
 	.when('/logout',{
-		templateUrl:'/',
-		controller: 'loginCtrl'
+		templateUrl: 'views/logout.html',
+		controller: 'logoutCtrl'
 	});
 	
 	$locationProvider.html5Mode(true);
