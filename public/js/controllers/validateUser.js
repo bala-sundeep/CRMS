@@ -1,7 +1,6 @@
 
-crms.controller('validateUser',function ($scope, $http, $location) {
+crms.controller('validateUser',function ($scope, $http, $location,$window) {
     $scope.user="";
-    console.log($scope.user);
     $scope.addStudent=function(){
         var login = {
             roll : $scope.user,
@@ -15,7 +14,14 @@ crms.controller('validateUser',function ($scope, $http, $location) {
 		}).then(function(response){
             login.roll="";
             login.password="";
+            $window.location.href="http://localhost:3000/index"  ;
+           //$http.get('/index');
+          /* $http({
+               method:'GET',
+               url:'/index'
+           }).then(function(response){
+               console.log(response);
+           });*/
         });
     };
-    
 });

@@ -12,7 +12,9 @@ mongoose.connect(dbHost,function(err){
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json({}));
 
-
+app.get('/index',function(req,res){
+	res.sendFile(__dirname+'\\public\\views\\index.html');
+})
 // custom config
 var company = require('./app/company-crud');
 var student = require('./app/student-crud');
@@ -23,9 +25,7 @@ app.use(function(req,res){
 	res.sendFile(__dirname+'/public/login.html');
 });
 
-app.get('/index',function(req,res){
-	console.log(__dirname+'public/views/index.html');
-})
+
 
 // route middleware to authenticate and check token
 

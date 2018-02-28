@@ -42,13 +42,12 @@ router.post('/authenticate',function(req,res){
 				var payload = {
 					admin: user.regNumber	
 				}
-				var token = jwt.sign(payload, config.secret, {
-					expiresIn: 86400 // expires in 24 hours
-				});
+				var token = jwt.sign(payload, config.secret);
 				var t=res.cookie('mytok',token,{maxAge:900000});
 				//res.send("hi");
 				//next();
-		        res.redirect("http://localhost:3000/index");
+			   // res.redirect("http://localhost:3000/index");
+			   res.sendStatus(200);
 			}
 		}
 	});
