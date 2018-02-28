@@ -5,6 +5,10 @@ angular.module('appRoutes',[])
 		templateUrl: 'views/login1.html',
 		controller :  'validateUser'
 	})
+	.when('/home',{
+		templateUrl: 'views/home.html',
+		controller: 'showDetails'
+	})
 	.when('/recruiters',{
 		templateUrl: 'views/recruiters.html',
 		controller : 'recruitCtrl'
@@ -27,6 +31,10 @@ angular.module('appRoutes',[])
 		templateUrl: 'views/addstudent.html',
 		controller : 'studentCtrl'
 		
+	})
+	.when('/logout',{
+		templateUrl:'/',
+		controller: 'loginCtrl'
 	});
 	
 	$locationProvider.html5Mode(true);
