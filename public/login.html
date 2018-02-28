@@ -75,7 +75,9 @@
 
                 <div style="padding: 10px;">
                 	<div ng-view></div>
-                    <div id="myfirstchart" style="height: 250px;"></div>
+                    
+                    <div id="myfirstchart" style="height: 250px;width: 500px;float: left;"><h2 style="text-align: center;">Year Wise placed History</h2></div>
+                    <div id="barchart" style="height: 250px;width:500px;float: left;"><h2 style="text-align: center;">Placed Vs Non</h2></div>
                 </div>
             </div>
         </div>
@@ -101,5 +103,20 @@
   xkey: 'year',
   ykeys: ['value'],
   labels: ['Placed']
+});
+new Morris.Bar({
+  element: 'barchart',
+  data: [
+    { y: '2011', a: 500, b: 90 },
+    { y: '2012', a: 575,  b: 65 },
+    { y: '2013', a: 550,  b: 40 },
+    { y: '2014', a: 475,  b: 65 },
+    { y: '2015', a: 550,  b: 40 },
+    { y: '2016', a: 575,  b: 65 },
+    { y: '2017', a: 600, b: 90 }
+  ],
+  xkey: 'y',
+  ykeys: ['a', 'b'],
+  labels: ['Placed', 'Non Placed']
 });
 </script>
