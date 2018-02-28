@@ -72,7 +72,7 @@ var hash = bcrypt.hashSync(req.body.password, salt);
 		password   : hash
 	});
 
-	console.log(newStudent);
+	//console.log(newStudent);
 	newStudent.save(function(err, docs){
 		if(err) throw err;
 		console.log('Saved');
