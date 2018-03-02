@@ -12,19 +12,23 @@ mongoose.connect(dbHost,function(err){
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json({}));
 
-app.get('/index',function(req,res){
-	res.sendFile(__dirname+'\\public\\views\\index.html');
-})
-// custom config
+app.use(express.static(__dirname+'/public'));
+app.get(['/','/login'],function(req,res){
+	res.sendFile(__dirname+'/public/login.html');
+});
 var company = require('./app/company-crud');
 var student = require('./app/student-crud');
 app.use('/company',company);
 app.use('/student',student);
-app.use(express.static(__dirname + '/public'));
-app.use(function(req,res){
-	res.sendFile(__dirname+'/public/login.html');
+app.get('/index',function(req,res){
+	res.sendFile(__dirname+'/public/views/index.html');
+});
+app.get('/logout',function(req,res){
+	res.clearCookie("mytok");
+	res.sendStatus(200);
 });
 
+// custom config
 
 
 // route middleware to authenticate and check token
@@ -45,7 +49,6 @@ app.use(function(req,res){
 });
 */
 //main
-require('./app/routes')(app);
 
 var PORT = process.env.PORT || 3000;
 app.listen(PORT,function(){

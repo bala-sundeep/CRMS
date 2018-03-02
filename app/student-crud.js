@@ -8,35 +8,18 @@ var config = require('./config');
 var cp=require('cookie-parser');
 router.use(cp());
 // creating company schema
-var studentSchema = mongoose.Schema({
-	studentName: String,
-	regNumber  : String,
-	branch     : String,
-	cource     : String,
-	year       : Number,
-	ssc        : String,
-	inter      : String,
-	current    : String,
-	project    : String, 
-	nBclog     : String,
-    placed     : Boolean,
-    package    : Number,
-	company    : String,
-	password   : String	
-});
-
-var Student = mongoose.model('Student',studentSchema,'newStudent');
+var Student   = require(__dirname+'/student');
 var saltRounds=10;
 // operations on student schema
 router.post('/authenticate',function(req,res){
 	Student.findOne({regNumber: req.body.roll},function(err,user){
 		if(err) throw err;
 		else if(!user){
-			console.log("jndsfijsdn");
+			console.log("Invalid Username");
 		}
 		else{
 			if (!bcrypt.compareSync(req.body.password, user.password)) {
-				console.log("wrong password");
+				console.log("Incorrect password");
 			}
 			else{
 				var payload = {
@@ -115,12 +98,8 @@ router.delete('/delete/:id',function(req,res){
 	});
 });
 
-router.get('/logout',function(req,res){
-	console.log(req.cookies);
-	res.sendStatus(200);
-});
+
 router.get('/myProfile',function(req,res){
-console.log(req.cookies);
 var d=jwt.decode(req.cookies.mytok,config.secret);
 Student.findOne({regNumber:d.admin},function(err,docs){
 //	console.log(d.admin);

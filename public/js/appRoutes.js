@@ -13,7 +13,7 @@ angular.module('appRoutes',[])
 		templateUrl: 'views/recruiters.html',
 		controller : 'recruitCtrl'
 	})
-		.when('/studentdetails',{
+	.when('/studentdetails',{
 		templateUrl: 'views/students.html',
 		controller : 'studentCtrl'
 	})
@@ -35,10 +35,6 @@ angular.module('appRoutes',[])
 	.when('/profile',{
 		templateUrl:'views/profile.html',
 		controller:'profileCtrl'
-	})
-	.when('/logout',{
-		templateUrl: 'views/logout.html',
-		controller: 'logoutCtrl'
 	});
 	
 	$locationProvider.html5Mode(true);

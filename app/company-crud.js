@@ -2,19 +2,24 @@ var express = require('express');
 var router  = express.Router();
 bodyParser  = require('body-parser');
 var mongoose = require('mongoose');
-
+var jwt    = require('jsonwebtoken');
+var config = require('./config');
+var cp=require('cookie-parser');
+router.use(cp());
+var Student   = require(__dirname+'/student');
 // creating company schema
 var companySchema = mongoose.Schema({
 	companyName: String,
 	companyLoc : String,
-	CTC        : String,
+	CTC        : Number,
 	bondPeriod : String,
 	domain     : String,
 	examPattern: String,
 	DOI        : String,
 	DOJ        : String,
 	aboutCmpny : String, 
-	year       : String      
+	year       : String,
+	eligible	:Boolean      
 });
 
 var Company = mongoose.model('Company',companySchema,'newCompany');
@@ -43,8 +48,22 @@ router.post('/add',function(req,res) {
 });
 
 router.get('/all',function(req,res){
+	
 	Company.find({},function(err,docs){
+		var d=jwt.decode(req.cookies.mytok,config.secret);
+		Student.findOne({regNumber:d.admin},function(err,user){
+		if(err) throw err;
+		for(var i=0;i<docs.length;i++){
+			if(docs[i]['CTC']-user['package']>4)
+			docs[i].eligible="true";
+			else
+			docs[i].eligible="false";
+		}
+		//console.log(docs[1].eligible);
 		res.json(docs);
+		});
+		
+
 	});
 });
 
