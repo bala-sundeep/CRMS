@@ -33,7 +33,7 @@ crms.controller('studentCtrl',function ($scope, $http, $location) {
 		};
 		$http({
 			method : 'POST',
-			url    : '/student/add',
+			url    : '/basic/add',
 			headers: {'Content-Type':'application/json'},
 			data   : angular.fromJson(student)
 		}).then(function(response){

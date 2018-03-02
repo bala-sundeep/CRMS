@@ -3,6 +3,8 @@ var app		   = express();
 var mongoose   = require('mongoose');
 var bodyParser = require('body-parser');
 var dbHost = 'mongodb://localhost:27017/crms';
+var cp=require('cookie-parser');
+app.use(cp());
 mongoose.connect(dbHost,function(err){
 	if(err) console.log('error');
 	else console.log('connected');
@@ -15,6 +17,16 @@ app.use(bodyParser.json({}));
 app.use(express.static(__dirname+'/public'));
 app.get(['/','/login'],function(req,res){
 	res.sendFile(__dirname+'/public/login.html');
+});
+var basicAuth = require('./app/student-auth-reg');
+app.use('/basic',basicAuth);
+app.use(function(req, res, next) {
+	//console.log(req.cookies);
+	// check header or url parameters or post parameters for token
+	var mytok=req.cookies.mytok;
+	if(mytok) next();
+	else
+	res.redirect("http://localhost:3000/");
 });
 var company = require('./app/company-crud');
 var student = require('./app/student-crud');

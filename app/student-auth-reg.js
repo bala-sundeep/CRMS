@@ -11,7 +11,7 @@ router.use(cp());
 var Student   = require(__dirname+'/student');
 var saltRounds=10;
 // operations on student schema
-/*router.post('/authenticate',function(req,res){
+router.post('/authenticate',function(req,res){
 	Student.findOne({regNumber: req.body.roll},function(err,user){
 		if(err) throw err;
 		else if(!user){
@@ -29,7 +29,7 @@ var saltRounds=10;
 				var t=res.cookie('mytok',token,{maxAge:900000});
 				//res.send("hi");
 				//next();
-			   // res.redirect("http://localhost:3000/index");
+               // res.redirect("http://localhost:3000/index");
 			   res.sendStatus(200);
 			}
 		}
@@ -61,53 +61,6 @@ var hash = bcrypt.hashSync(req.body.password, salt);
 		console.log('Saved');
 		res.json(docs);
 	});
-});*/
-router.get('/all',function(req,res){
-	Student.find({},function(err,docs){
-		res.json(docs);
-	});
 });
-
-
-router.put('/update/:id',function(req,res){
-	console.log(req.body);
-	Student.update({_id:req.params.id}, {"$set":{
-		studentName: req.body.name,
-		regNumber  : req.body.rno,
-		branch     : req.body.branch,
-		cource     : req.body.cource,
-		year       : req.body.year,
-		ssc        : req.body.ssc,
-		inter      : req.body.inter,
-		current    : req.body.current,
-		project    : req.body.project, 
-		nBclog     : req.body.nBclog,
-	    placed     : req.body.placed,
-	    package    : req.body.package,
-	    company    : req.body.company
-
-	}}, function(err,data){
-		console.log(data);
-		res.json(data);
-	});
-});
-
-router.delete('/delete/:id',function(req,res){
-	Student.remove({_id:req.params.id},function(err, docs){
-		res.json(docs);
-	});
-});
-
-
-router.get('/myProfile',function(req,res){
-var d=jwt.decode(req.cookies.mytok,config.secret);
-Student.findOne({regNumber:d.admin},function(err,docs){
-//	console.log(d.admin);
-	//console.log(docs);
-res.json(docs);
-});
-
-});
-
 
 module.exports = router;
