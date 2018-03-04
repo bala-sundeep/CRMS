@@ -17,8 +17,6 @@ angular.module('appRoutes',[])
 		templateUrl: 'views/students.html',
 		controller : 'studentCtrl'
 	})
-
-
 	.when('/addRecruiter',{
 		templateUrl: 'views/addRecruiter.html',
 		controller : 'recruitCtrl'
