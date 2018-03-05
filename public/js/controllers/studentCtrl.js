@@ -37,6 +37,9 @@ crms.controller('studentCtrl',function ($scope, $http, $location) {
 			headers: {'Content-Type':'application/json'},
 			data   : angular.fromJson(student)
 		}).then(function(response){
+			if(response.data.m=="exists"){
+				$scope.addRmsg="user already exists";
+			}else{
 			$scope.addRmsg="Successfully Added";
 		 s.name="";
 		 s.rno="";
@@ -52,6 +55,7 @@ crms.controller('studentCtrl',function ($scope, $http, $location) {
 	    s.package="";
 		s.company="";
 		s.password="";
+			}
 		});
 	}; 
 

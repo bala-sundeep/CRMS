@@ -54,7 +54,7 @@ router.get('/all',function(req,res){
 		Student.findOne({regNumber:d.admin},function(err,user){
 		if(err) throw err;
 		for(var i=0;i<docs.length;i++){
-			if(docs[i]['CTC']-user['package']>4)
+			if((docs[i]['CTC']-user['package']>4))
 			docs[i].eligible="true";
 			else
 			docs[i].eligible="false";

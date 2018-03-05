@@ -36,8 +36,11 @@ router.post('/authenticate',function(req,res){
 	});
 });
 router.post('/add',function(req, res) {
-	var salt = bcrypt.genSaltSync(saltRounds);
-var hash = bcrypt.hashSync(req.body.password, salt);
+	Student.findOne({regNumber: req.body.roll},function(err,user){
+		if(err) throw err;
+		else if(user){
+			var salt = bcrypt.genSaltSync(saltRounds);
+			var hash = bcrypt.hashSync(req.body.password, salt);
 	var newStudent = new Student({
 		studentName: req.body.name,
 		regNumber  : req.body.rno,
@@ -60,6 +63,11 @@ var hash = bcrypt.hashSync(req.body.password, salt);
 		if(err) throw err;
 		console.log('Saved');
 		res.json(docs);
+	});
+		}
+		else{
+			res.json({m:'exists'});
+			}
 	});
 });
 
