@@ -32,7 +32,6 @@ app.use(function(req, res, next) {
 	if(mytoken){
 		mytoken=jwt.verify(mytoken,config.secret);
 	Student.findOne({'regNumber':mytoken.admin},'regNumber',function(err,user){
-		console.log(user);
 		if(err) throw err;
 		else next();
 	});
