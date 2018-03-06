@@ -4,6 +4,12 @@ bodyParser  = require('body-parser');
 var mongoose = require('mongoose');
 var jwt    = require('jsonwebtoken');
 var config = require('./config');
+var nodemailer = require('nodemailer');
+const Nexmo = require('nexmo');
+const nexmo = new Nexmo({
+  apiKey: '81f33c63',
+  apiSecret: 'GDr1g3zkdQECjAEJ'
+});
 var cp=require('cookie-parser');
 router.use(cp());
 var Student   = require(__dirname+'/student');
@@ -45,6 +51,41 @@ router.post('/add',function(req,res) {
 		console.log('Saved');
 		res.json(docs);
 	});
+	var transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false,
+    requireTLS: true,
+	  auth: {
+	    user: 'arunbandari0@gmail.com',
+	    pass: 'arun12345'
+	  }
+	});
+
+	var mailOptions = {
+	  from: 'GRIET PLACEMENTS DUMMY',
+	  to: 'arunbandari2@gmail.com',
+	  subject: req.body.name+' Campus',
+	  text: 'Please go through griet placements portal for more info!'
+	};
+
+	transporter.sendMail(mailOptions, function(error, info){
+	  if (error) {
+	    console.log(error);
+	  } else {
+	    console.log('Email sent: ' + info.response);
+	  }
+	});
+	nexmo.message.sendSms(
+    '918639790749', '918639790749', req.body.name+' Campus',
+    (err, responseData) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.dir(responseData);
+      }
+    }
+ );
 });
 
 router.get('/all',function(req,res){
