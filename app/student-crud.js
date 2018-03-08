@@ -1,4 +1,5 @@
 var express = require('express');
+var lower   =require('lower-case');
 var router  = express.Router();
 bodyParser  = require('body-parser');
 var mongoose = require('mongoose');
@@ -6,19 +7,23 @@ var bcrypt = require('bcrypt');
 var jwt    = require('jsonwebtoken');
 var config = require('./config');
 var cp=require('cookie-parser');
+
 router.use(cp());
 // creating company schema
 var Student   = require(__dirname+'/student');
 var saltRounds=10;
-var trainingsSchema=mongoose.Schema({
-	companyName:String,
+/*var trainingsSchema=mongoose.Schema({
+	//companyName:String,
 	trainee        : String,
-	startDate        : String,
+	duration       :String,
+	startDate      : String,
 	endDate        : String,
 	timings        : String,
+	topics         : String,
+	feedback       : String
 
 });
-var t=mongoose.model('trainings',trainingsSchema);
+var t=mongoose.model('trainings',trainingsSchema);*/
 // operations on student schema
 /*router.post('/authenticate',function(req,res){
 	Student.findOne({regNumber: req.body.roll},function(err,user){
@@ -76,17 +81,17 @@ router.get('/all',function(req,res){
 		res.json(docs);
 	});
 });
-router.get('/alltraining',function(req,res)
+/*router.get('/alltraining',function(req,res)
 {
 	t.find({},function(err,docs1){
 		res.json(docs1);
 
 });
-});
+});*/
 router.get('/myProfile',function(req,res){
 	var d=jwt.decode(req.cookies.mytok,config.secret);
 	console.log(d);
-	//var p=res.attachment('C:\\Users\\Bhargavi\\Desktop\\students14\\14241a05c3.jpg');
+	//var p=res.attachment('C:\\Users\\Bhargavi\\Desktop\\edited\\CRMS-master\\students14\\14241a05c3.jpg');
 	Student.findOne({regNumber:d.admin},function(err,docs){
 		res.json(docs);
 	});
@@ -97,6 +102,12 @@ router.get('/getStatus',function(req,res){
 	Student.findOne({regNumber:d.admin},function(err,docs){
 		res.json(docs);
 	});
+});
+router.get('/myImage',function(req,res){
+	var d=jwt.decode(req.cookies.mytok,config.secret);
+	var path="C:\\Users\\arun\\Desktop\\CRMS\\students14\\"+lower(d.admin)+".jpg";
+	console.log(path);
+res.sendFile(path);
 });
 router.post('/update',function(req,res){
 	console.log(req.body+"reqbody");

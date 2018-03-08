@@ -45,11 +45,13 @@ app.use(function(req, res, next) {
 
 
 var company = require('./app/company-crud');
+var training=require('./app/trainings');
 var student = require('./app/student-crud');
 var application = require('./app/application');
 app.use('/company',company);
 app.use('/student',student);
 app.use('/apply',application);
+app.use('/training',training);
 app.get('/index',function(req,res){
 	res.sendFile(__dirname+'/public/views/index.html');
 });

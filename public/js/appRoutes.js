@@ -42,6 +42,10 @@ angular.module('appRoutes',[])
 		templateUrl:'views/list.html',
 		controller: 'recruitCtrl'
 	})
+	.when('/addTraining',{
+		templateUrl:'views/addTraining.html',
+	controller:'trainingCtrl'
+	})
 	.when('/status',{
 		templateUrl:'views/status.html',
 	controller:'statusCtrl'
