@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <style>
+            .d
+            { font-weight:bold;height:20px;width:200px; padding:5px;}
+            .h
+            {
+                font-weight:bold;height:20px;width:200px;padding:5px;}
+            #d:focus{
+                background-color:maroon;font-style:oblique; }
+        </style>
+    </head>
+    <body>
+        <h1>{{data.regNumber}}</h1>
+        <table border=0 padding="5px" width=40% >
+    <tr><td class="h">FULL NAME :</td><td class="d">{{data.studentName}}</td></tr>
+    <tr><td class="h">FATHER'S NAME :</td><td class="d">{{data.fName}}</td></tr>
+    <tr><td class="h">MOBILE NO :</td><td class="d">{{data.mobileNo}}</td></tr>
+    <tr><td class="h">EMAIL :</td><td class="d">{{data.email}}</td></tr>
+    <tr><td class="h">ADDRESS:</td><td class="d">{{data.address}}</td></tr>
+    <tr><td class="h">COURSE :</td><td class="d">{{data.cource}}</td></tr>
+    <tr><td class="h">YEAR :</td><td class="d">{{data.year}}</td></tr>
+    <tr><td class="h">BRANCH :</td><td class="d">{{data.branch}}</td></tr>
+    <tr><td class="h">SECTION :</td><td class="d">{{data.section}}</td></tr>
+    <tr><td class="h">BTECH % :</td><td class="d">{{data.current}}</td></tr>
+    <tr><td class="h">NO OF BACKLOGS :</td><td class="d">{{data.nBclog}}</td></tr>
+    <tr><td class="h">PROJECT :</td><td class="d">{{data.project}}</td></tr>
+    <tr><td><a href='/update' id="a" style="display:inline-block;height:40px;width:90px;background-color:indianred;padding:5px;font-style:italic;color:white;font-size:20px;">update</a></td></tr>
+        </table>
+        <img src="C://Users/Bhargavi/Desktop/students14/14241a05c7.jpg" height=100px width=100px></img>
+    </body>
+</html>
