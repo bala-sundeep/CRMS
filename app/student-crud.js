@@ -1,4 +1,5 @@
 var express = require('express');
+var lower   =require('lower-case');
 var router  = express.Router();
 bodyParser  = require('body-parser');
 var mongoose = require('mongoose');
@@ -6,6 +7,7 @@ var bcrypt = require('bcrypt');
 var jwt    = require('jsonwebtoken');
 var config = require('./config');
 var cp=require('cookie-parser');
+
 router.use(cp());
 // creating company schema
 var Student   = require(__dirname+'/student');
@@ -89,7 +91,7 @@ router.get('/all',function(req,res){
 router.get('/myProfile',function(req,res){
 	var d=jwt.decode(req.cookies.mytok,config.secret);
 	console.log(d);
-	//var p=res.attachment('C:\\Users\\Bhargavi\\Desktop\\students14\\14241a05c3.jpg');
+	//var p=res.attachment('C:\\Users\\Bhargavi\\Desktop\\edited\\CRMS-master\\students14\\14241a05c3.jpg');
 	Student.findOne({regNumber:d.admin},function(err,docs){
 		res.json(docs);
 	});
@@ -100,6 +102,11 @@ router.get('/getStatus',function(req,res){
 	Student.findOne({regNumber:d.admin},function(err,docs){
 		res.json(docs);
 	});
+});
+router.get('/myImage',function(req,res){
+	var d=jwt.decode(req.cookies.mytok,config.secret);
+	var path="C:\\Users\\Bhargavi\\Desktop\\edited\\CRMS-master\\students14\\"+lower(d.admin)+".jpg";
+res.sendFile(path);
 });
 router.post('/update',function(req,res){
 	console.log(req.body+"reqbody");
