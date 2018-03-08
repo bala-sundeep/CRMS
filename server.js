@@ -19,6 +19,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json({}));
 
 app.use(express.static(__dirname+'/public'));
+app.use(express.static(__dirname+'/public/students14'));
 app.get(['/','/login'],function(req,res){
 	res.sendFile(__dirname+'/public/login.html');
 });

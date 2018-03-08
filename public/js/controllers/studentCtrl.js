@@ -29,7 +29,12 @@ crms.controller('studentCtrl',function ($scope, $http, $location) {
 	    placed     : s.placed,
 	    package    : s.package,
 		company    : s.company,
-		password   : s.password
+		password   : s.password,
+		mobileNo   : s.mobileNo,
+		email      :s.email,
+		address    :s.address,
+		fName       :s.fName,
+		section     :s.section
 		};
 		$http({
 			method : 'POST',
@@ -55,6 +60,11 @@ crms.controller('studentCtrl',function ($scope, $http, $location) {
 	    s.package="";
 		s.company="";
 		s.password="";
+		s.mobileNo="";
+		s.email="";
+		s.address="";
+		s.fName="";
+		s.section="";
 			}
 		});
 	}; 

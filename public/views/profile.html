@@ -1,27 +1,36 @@
-
-<div class="table-responsive">
-        <table class="table table-bordered" style="background-color: #fff;">
-          <thead>
-            <tr>
-        
-              <th scope="col">Student Name</th>
-              <th scope="col">Rno</th>
-              <th scope="col">Branch</th>
-              <th scope="col">Percentage</th>
-              <th scope="col">placed</th>
-              <th scope="col">Company</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              
-              <td>{{data.studentName|uppercase}}</td>
-              <td>{{data.regNumber}}</td>
-              <td>{{data.branch}}</td>
-              <td>{{data.current}}</td>
-              <td>{{data.placed}}</td>
-              <td>{{data.company}}</td>
-            </tr>
-          </tbody>
-        </table>
-        </div>
+<html>
+    <head>
+        <style>
+            .d
+            { font-weight:bold;height:20px;width:200px; padding:5px;}
+            .h
+            {
+                font-weight:bold;height:20px;width:200px;padding:5px;}
+            #d:focus{
+                background-color:maroon;font-style:oblique; }
+        </style>
+    </head>
+    <body>
+            <div class="card" style="width:1000px;height:500px;position:relative;">
+                <img width:"100px"; height: "100px"; class="card-img-top" src="http://localhost:3000/public/students14/14241a05c7.jpg" alt="{{data.regNumber}}" height=100px width=100px></img>
+                <h5 class="card-title">{{data.regNumber}}</h5>
+                    <div class="card-body"><center>
+                            <table border=0 padding="5px" width=100% style="margin-left:100px; text-align:left;">
+                                    <tr><td class="h">FULL NAME :</td><td class="d">{{data.studentName}}</td></tr>
+                                    <tr><td class="h">FATHER'S NAME :</td><td class="d">{{data.fName}}</td></tr>
+                                    <tr><td class="h">MOBILE NO :</td><td class="d">{{data.mobileNo}}</td></tr>
+                                    <tr><td class="h">EMAIL :</td><td class="d">{{data.email}}</td></tr>
+                                    <tr><td class="h">ADDRESS:</td><td class="d">{{data.address}}</td></tr>
+                                    <tr><td class="h">COURSE :</td><td class="d">{{data.cource}}</td></tr>
+                                    <tr><td class="h">YEAR :</td><td class="d">{{data.year}}</td></tr>
+                                    <tr><td class="h">BRANCH :</td><td class="d">{{data.branch}}</td></tr>
+                                    <tr><td class="h">SECTION :</td><td class="d">{{data.section}}</td></tr>
+                                    <tr><td class="h">BTECH % :</td><td class="d">{{data.current}}</td></tr>
+                                    <tr><td class="h">NO OF BACKLOGS :</td><td class="d">{{data.nBclog}}</td></tr>
+                                    <tr><td class="h">PROJECT :</td><td class="d">{{data.project}}</td></tr>
+                                    </table></center>
+                    <a href='/update'id="a" style="position:absolute;float:right;" class="btn btn-primary">Update</a>
+                    </div>
+                  </div>
+    </body>
+</html>

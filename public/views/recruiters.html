@@ -1,4 +1,15 @@
-
+<html>
+  <head>
+    <style>
+     
+    #a1:disabled{
+        background: inherit; 
+        color: black; 
+        border: 2px solid gray;
+    }
+    </style>
+  </head>
+  <body>
 <div class="table-responsive">
 <table class="table table-bordered" style="background-color: #fff;">
   <thead>
@@ -17,13 +28,15 @@
     <tr ng-repeat=" company in data">
       <th scope="row">{{$index+1}}</th>
       <td>{{company.companyName|uppercase}}</td>
-      <td>{{company.CTC|currency:'₹ '}}</td>
+      <td>{{company.CTC|currency:'₹ '}}L</td>
       <td>{{company.DOI}}</td>
       <td>{{company.bondPeriod + ' years'}}</td>
       <td>{{company.domain}}</td>
       <td>{{company.companyLoc}}</td>
-      <td><button ng-model="button" ng-disabled="!{{company.eligible}}">Apply</button></td>
+      <td><button id="a1" ng-model="button" ng-disabled="!{{company.eligible}}">Apply</button></td>
     </tr>
   </tbody>
 </table>
 </div>
+</body>
+</html>

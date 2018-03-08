@@ -36,9 +36,11 @@ router.post('/authenticate',function(req,res){
 	});
 });
 router.post('/add',function(req, res) {
-	Student.findOne({regNumber: req.body.roll},function(err,user){
+	console.log(req.body.rno);
+	Student.findOne({regNumber: req.body.rno},function(err,user){
+		console.log(user);
 		if(err) throw err;
-		else if(user){
+		else if(user===null){
 			var salt = bcrypt.genSaltSync(saltRounds);
 			var hash = bcrypt.hashSync(req.body.password, salt);
 	var newStudent = new Student({
@@ -55,7 +57,12 @@ router.post('/add',function(req, res) {
 	    placed     : req.body.placed,
 	    package    : req.body.package,
 		company    : req.body.company,
-		password   : hash
+		password   : hash,
+		mobileNo   :req.body.mobileNo,
+		address    :req.body.address,
+		email      :req.body.email,
+		section    :req.body.section,
+		fName      :req.body.fName
 	});
 
 	//console.log(newStudent);

@@ -16,6 +16,11 @@ module.exports = mongoose.model('students', new Schema({
     placed     : Boolean,
     package    : Number,
 	company    : String,
-	password   : String	
+	password   : String,
+	mobileNo   :Number,
+	email      :String,
+	fName      :String,
+	section     :String,
+	address     :String
 })
 );

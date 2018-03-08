@@ -1,27 +1,25 @@
 
 <div class="table-responsive">
-    <table class="table table-bordered" style="background-color: #fff;">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Company Name</th>
-          <th scope="col">Team</th>
-          <th scope="col">Start Date</th>
-          <th scope="col">End Date</th>
-          <th scope="col">timings</th>
-          <th scope="col">package</th>
-        </tr>
-      </thead>
-     <!-- <tbody>
-        <tr ng-repeat=" training in data">
-          <th scope="row">{{$index+1}}</th>
-          <td>{{student.studentName|uppercase}}</td>
-          <td>{{student.regNumber}}</td>
-          <td>{{student.branch}}</td>
-          <td>{{student.current}}</td>
-          <td>{{student.placed}}</td>
-          <td>{{student.company}}</td>
-        </tr>-->
-      </tbody>
-    </table>
-    </div>
+  <table class="table table-bordered" style="background-color: #fff;">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Company Name</th>
+        <th scope="col">Team</th>
+        <th scope="col">Start Date</th>
+        <th scope="col">End Date</th>
+        <th scope="col">timings</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat=" training in data">
+        <th scope="row">{{$index+1}}</th>
+        <td>{{training.companyName|uppercase}}</td>
+        <td>{{training.trainee}}</td>
+        <td>{{training.startDate}}</td>
+        <td>{{training.endDate}}</td>
+        <td>{{training.timings}}</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>

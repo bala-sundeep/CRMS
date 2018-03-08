@@ -1,0 +1,9 @@
+<center><h1>{{data.regNumber}} </h1>
+    <h3>{{status}}<span ng-if="icon">&#9989;</span><span ng-if="!icon">&#10060;</span></h3>
+    <br>
+    <br>
+<table border=0  >
+<tr><td style="height:40px;width:200px;"><h3>Company&emsp;&emsp;:</h3></td><td style="height:40px;width:140px;"><h3>{{data.company}}</h3></td></tr>
+
+<tr><td style="height:40px;width:200px;"><h3>Package&emsp;&emsp;&ensp;:</h3></td><td style="height:40px;width:140px;"><h3>{{data.package|currency:'₹ '}}L</h3></td></tr>
+</table></center>
