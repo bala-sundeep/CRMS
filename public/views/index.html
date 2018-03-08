@@ -23,6 +23,8 @@
     <script type="text/javascript" src="js/controllers/recruitCtrl.js"></script>
     <script type="text/javascript" src="js/controllers/studentCtrl.js"></script>
     <script type="text/javascript" src="js/controllers/profileCtrl.js"></script>
+    <script type="text/javascript" src="js/controllers/statusCtrl.js"></script>
+    <script type="text/javascript" src="js/controllers/trainingCtrl.js"></script>
     <script type="text/javascript" src="js/appRoutes.js"></script>
     <!-- reports -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
@@ -41,23 +43,26 @@
 
                 <ul class="list-unstyled components">
                     <p>Dashboard</p>
-                    <li class='{{(loc=="/index"?"active":"")}}'>
+                    <li class='{{(loc=="/recruiters"?"active":"")}}'>
                         <a href="/recruiters"><i class="fa fa-university" aria-hidden="true"></i> Recruiters</a>
                     </li>
-                    <li>
+                    <li class='{{(loc=="/trainings"?"active":"")}}'>
                         <a href="/trainings"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Training</a>
                     </li>
-                     <li>
+                     <li class='{{(loc=="/studentdetails"?"active":"")}}'>
                         <a href="/studentdetails"><i class="fa fa-question-circle" aria-hidden="true"></i> Inquiry</a>
                     </li>
-                    <li>
+                    <li class='{{(loc=="/profile"?"active":"")}}'>
                         <a href="/profile"><i class="fa fa-user-circle-o" aria-hidden="true"></i> My Profile</a>
                     </li>
-                    <li>
+                    <li class='{{(loc=="/status"?"active":"")}}'>
                         <a href="/status"><i class="fa fa-hand-o-right" aria-hidden="true"></i></i> Placement Status</a>
                     </li>
-                    <li >
+                    <li class='{{(loc=="/addRecruiter"?"active":"")}}'>
                         <a href="/addRecruiter"><i class="fa fa-share-alt" aria-hidden="true"></i> Suggest</a>
+                    </li>
+                    <li class='{{(loc=="/getList"?"active":"")}}'>
+                        <a href="/getList"><i class="fa fa-share-alt" aria-hidden="true"></i> List</a>
                     </li>
                     
                 </ul>

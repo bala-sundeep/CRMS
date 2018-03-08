@@ -33,7 +33,10 @@ app.use(function(req, res, next) {
 		mytoken=jwt.verify(mytoken,config.secret);
 	Student.findOne({'regNumber':mytoken.admin},'regNumber',function(err,user){
 		if(err) throw err;
-		else next();
+		else{
+			req.rollno = mytoken.admin;
+			next();
+		} 
 	});
 	}
 	else

@@ -22,7 +22,7 @@
       <td>{{company.bondPeriod + ' years'}}</td>
       <td>{{company.domain}}</td>
       <td>{{company.companyLoc}}</td>
-      <td><button ng-model="button" ng-disabled="!{{company.eligible}}">Apply</button></td>
+      <td><button ng-model="button" ng-disabled="!{{company.eligible}}"  ng-click="register(company.companyName)">Apply</button></td>
     </tr>
   </tbody>
 </table>

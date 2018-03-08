@@ -1,7 +1,8 @@
 crms.controller('recruitCtrl',function ($scope, $http, $location) {
 	$scope.name="";
 	$scope.addRmsg="";
-
+	$scope.companies=['Google','Microsoft','Amazon'];
+	$scope.applicants=[];
 	/* HTTP */
 	$http({
 		method: 'GET',
@@ -12,6 +13,29 @@ crms.controller('recruitCtrl',function ($scope, $http, $location) {
 		console.log('err');
 	});
 
+	$scope.register   = function(cid){
+		console.log(cid);
+			$http({
+			method : 'POST',
+			url    : '/apply/new',
+			headers: {'Content-Type':'application/json'},
+			data   : {'cid':cid},
+		    }).then(function(response){
+		    		console.log('done');
+		    });
+	}
+	$scope.getList = function(){
+		console.log($scope.companyList);
+		$http({
+		method: 'GET',
+		url   : '/apply/all',
+		params: {'cid':$scope.companyList}
+		}).then(function(response){
+				$scope.applicants=response.data;
+			},function(err){
+				console.log('err');
+			});
+	}
 
 	$scope.addCompany = function(c){
 		console.log('hi');

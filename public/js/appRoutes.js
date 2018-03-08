@@ -33,6 +33,18 @@ angular.module('appRoutes',[])
 	.when('/profile',{
 		templateUrl:'views/profile.html',
 		controller:'profileCtrl'
+	})
+	.when('/update',{
+		templateUrl:'views/update.html',
+	controller:'profileCtrl'
+	})
+	.when('/getList',{
+		templateUrl:'views/list.html',
+		controller: 'recruitCtrl'
+	})
+	.when('/status',{
+		templateUrl:'views/status.html',
+	controller:'statusCtrl'
 	});
 	
 	$locationProvider.html5Mode(true);

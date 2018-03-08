@@ -10,15 +10,35 @@ var applicationSchema = mongoose.Schema({
 	studentId  : String, 
 });
 
-var applicaton = mongoose.model('Applicaton',applicationSchema,'newApplication');
+var application = mongoose.model('Application',applicationSchema,'newApplication');
+
+router.get('/all',function(req,res){
+	
+	application.find({'companyId': req.query.cid},function(err,docs){
+		/*var d=jwt.decode(req.cookies.mytok,config.secret);
+		Student.findOne({regNumber:d.admin},function(err,user){
+		if(err) throw err;
+		for(var i=0;i<docs.length;i++){
+			if((docs[i]['CTC']-user['package']>4))
+			docs[i].eligible="true";
+			else
+			docs[i].eligible="false";
+		}
+		//console.log(docs[1].eligible);
+		res.json(docs);
+		});*/
+		res.json(docs);
+
+	});
+});
 
 router.post('/new',function(req,res) {
-	console.log('hi');
-	var newApplication = new Applicaton({
-		companyId : 10,
-		studentId : 10,
+	console.log(req.body.cid);
+	var newApplication = new application({
+		companyId : req.body.cid,
+		studentId : req.rollno,
 	});
-	console.log(newCompany);
+	//console.log(newCompany);
 	newApplication.save(function(err, docs){
 		if(err) throw err;
 		console.log('Saved');
