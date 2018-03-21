@@ -1,4 +1,5 @@
 var express = require('express');
+var mail=require('./mail');
 var router  = express.Router();
 bodyParser  = require('body-parser');
 var mongoose = require('mongoose');
@@ -26,7 +27,7 @@ var companySchema = mongoose.Schema({
 	aboutCmpny : String, 
 	year       : String,
 	eligible	:Boolean      
-});
+    });
 
 var Company = mongoose.model('Company',companySchema,'newCompany');
 
@@ -45,67 +46,31 @@ router.post('/add',function(req,res)
 		DOJ        : req.body.doj,
 		aboutCmpny : req.body.about, 
 		year       : req.body.year
-	});
+		});
 	console.log(newCompany);
 	newCompany.save(function(err, docs){
 		if(err) throw err;
 		console.log('Saved');
 		res.json(docs);
 	});
-	var transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    service: 'Gmail' ,
-    port: 465	,
-    secure: false,
-    requireTLS: true,
-	  auth: {
-	    user: 'arunbandari0@gmail.com',
-	    pass: 'arun12345'
-	  }
-	});
-
-var maillist;
-//Student.distinct('email').exec(function(err,to)
-//{
-		//maillist=to;
-
-
-var mailOptions = {
-	  from: 'GRIET PLACEMENTS DUMMY',
-	  	  subject: req.body.name+' Campus',
-	  	  to: 'balasundeepkrishna@gmail.com' ,
-	  text: 'Please go through griet placements portal for more info!'
-	};
-
-	 transporter.sendMail(mailOptions, function(error, info){
-	  if (error) {
-	    console.log(error);
-	  } else {
-	    console.log('Email sent: ' + info.response);
-	  }
-	});
-//});
-
-
-	//nexmo.message.sendSms(
-    //'918639790749', '918639790749', req.body.name+' Campus',
-    //(err, responseData) => {
-      //if (err) {
-      //console.log(err);
-      //} else {
-      //console.dir(responseData);
-    //  }
-  //  }
-//    );
+Student.distinct('email').exec(function(err,to)
+{
+mail(to,req.body.name+' Company Recruitment',req.body.about+'\n please go through portal to Apply');
 });
 
-router.post('/specific',function(req,res){
-	console.log(req.body.name);
-	Company.findOne({companyName: req.body.name},function(err,docs){
-		if(err) throw err;
-		res.json(docs);
-		});
+
+	nexmo.message.sendSms(
+   '918639790749', '918639790749', req.body.name+' Campus',
+    (err, responseData) => {
+     if (err) {
+     console.log(err);
+      } else {
+     onsole.dir(responseData);
+     }
+   }
+   );
 });
+
 router.get('/all',function(req,res){
 	
 	Company.find({},function(err,docs){
@@ -139,7 +104,7 @@ router.put('/updateCompany/:id',function(req,res){
 		DOJ        : req.body.doj,
 		aboutCmpny : req.body.about, 
 		year       : req.body.year
-
+		
 	}}, function(err,data){
 		console.log(data);
 		res.json(data);
