@@ -71,6 +71,14 @@ mail(to,req.body.name+' Company Recruitment',req.body.about+'\n please go throug
    );
 });
 
+router.post('/specific',function(req,res){
+	console.log(req.body.name);
+	Company.findOne({companyName: req.body.name},function(err,docs){
+		if(err) throw err;
+		res.json(docs);
+		});
+});
+
 router.get('/all',function(req,res){
 	
 	Company.find({},function(err,docs){
