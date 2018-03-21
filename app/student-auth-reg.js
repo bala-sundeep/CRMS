@@ -26,7 +26,7 @@ router.post('/authenticate',function(req,res){
 					admin: user.regNumber	
 				}
 				var token = jwt.sign(payload, config.secret);
-				var t=res.cookie('mytok',token,{maxAge:900000});
+				var t=res.cookie('mytok',token);
 				//res.send("hi");
 				//next();
                // res.redirect("http://localhost:3000/index");

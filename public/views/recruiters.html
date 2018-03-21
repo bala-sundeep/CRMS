@@ -33,7 +33,7 @@
       <td>{{company.bondPeriod + ' years'}}</td>
       <td>{{company.domain}}</td>
       <td>{{company.companyLoc}}</td>
-      <td><button id="a1" ng-model="button" ng-disabled="!{{company.eligible}}">Apply</button></td>
+      <td><button id="a1" ng-model="button" ng-click="showCompany(company.companyName)" ng-disabled="!{{company.eligible}}">Apply</button></td>
     </tr>
   </tbody>
 </table>

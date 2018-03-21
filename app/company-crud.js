@@ -25,14 +25,15 @@ var companySchema = mongoose.Schema({
 	DOJ        : String,
 	aboutCmpny : String, 
 	year       : String,
-	eligible	 : Boolean      
+	eligible	:Boolean      
 });
 
 var Company = mongoose.model('Company',companySchema,'newCompany');
 
 // operations on company schema
 
-router.post('/add',function(req,res) {
+router.post('/add',function(req,res) 
+{
 	var newCompany = new Company({
 		companyName: req.body.name,
 		companyLoc : req.body.location,
@@ -53,7 +54,8 @@ router.post('/add',function(req,res) {
 	});
 	var transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
-    port: 587,
+    service: 'Gmail' ,
+    port: 465	,
     secure: false,
     requireTLS: true,
 	  auth: {
@@ -62,32 +64,48 @@ router.post('/add',function(req,res) {
 	  }
 	});
 
-	var mailOptions = {
+var maillist;
+//Student.distinct('email').exec(function(err,to)
+//{
+		//maillist=to;
+
+
+var mailOptions = {
 	  from: 'GRIET PLACEMENTS DUMMY',
-	  to: 'arunbandari2@gmail.com',
-	  subject: req.body.name+' Campus',
+	  	  subject: req.body.name+' Campus',
+	  	  to: 'balasundeepkrishna@gmail.com' ,
 	  text: 'Please go through griet placements portal for more info!'
 	};
 
-	transporter.sendMail(mailOptions, function(error, info){
+	 transporter.sendMail(mailOptions, function(error, info){
 	  if (error) {
 	    console.log(error);
 	  } else {
 	    console.log('Email sent: ' + info.response);
 	  }
 	});
-	nexmo.message.sendSms(
-    '918639790749', '918639790749', req.body.name+' Campus',
-    (err, responseData) => {
-      if (err) {
-        console.log(err);
-      } else {
-        console.dir(responseData);
-      }
-    }
- );
+//});
+
+
+	//nexmo.message.sendSms(
+    //'918639790749', '918639790749', req.body.name+' Campus',
+    //(err, responseData) => {
+      //if (err) {
+      //console.log(err);
+      //} else {
+      //console.dir(responseData);
+    //  }
+  //  }
+//    );
 });
 
+router.post('/specific',function(req,res){
+	console.log(req.body.name);
+	Company.findOne({companyName: req.body.name},function(err,docs){
+		if(err) throw err;
+		res.json(docs);
+		});
+});
 router.get('/all',function(req,res){
 	
 	Company.find({},function(err,docs){

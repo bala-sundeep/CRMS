@@ -1,0 +1,48 @@
+<form class="form-horizontal">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Trainee:</label>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" id="email" placeholder="Training team" name="trainingTeam" ng-model="s.trainee">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Duration:</label>
+      <div class="col-sm-8">          
+        <input type="text" class="form-control" id="pwd" placeholder=" Ex:- 1 month" name="duration" ng-model="s.duration">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Start Date:</label>
+      <div class="col-sm-8">          
+        <input class="form-control" id="pwd" placeholder="12-6-2018" name="startDate" ng-model="s.startDate"></input>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">End Date:</label>
+      <div class="col-sm-8">          
+        <input class="form-control" id="pwd" placeholder="28-6-2018" name="endDate" ng-model="s.endDate"></input>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Timings:</label>
+      <div class="col-sm-8">          
+        <input class="form-control" id="pwd" placeholder="Ex:- 10 a.m to 2 p.m" name="timings" ng-model="s.timings"></input>
+      </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" >Topics:</label>
+        <div class="col-sm-8">          
+          <textarea class="form-control"  placeholder="topics" name="topics" ng-model="s.topics"></textarea>
+        </div>
+      </div>
+
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-8">
+        <button  ng-click="addTraining(s)" class="btn btn-default">Submit</button>
+      </div>
+    </div>
+    <strong>{{addRmsg}}</strong>
+    <!--<div ng-show="(addRmsg.length!=0?true:false)" class="alert alert-success">
+    
+    </div>-->
+  </form>

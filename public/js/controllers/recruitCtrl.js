@@ -1,4 +1,4 @@
-crms.controller('recruitCtrl',function ($scope, $http, $location) {
+crms.controller('recruitCtrl',function ($scope, $http, $location,$window) {
 	$scope.name="";
 	$scope.addRmsg="";
 
@@ -12,6 +12,9 @@ crms.controller('recruitCtrl',function ($scope, $http, $location) {
 		console.log('err');
 	});
 
+	$scope.showCompany = function(name){
+		$window.location.href="http://localhost:3000/companyDetails/:"+name;
+	}
 
 	$scope.addCompany = function(c){
 		console.log('hi');

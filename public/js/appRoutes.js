@@ -13,6 +13,10 @@ angular.module('appRoutes',[])
 		templateUrl: 'views/recruiters.html',
 		controller : 'recruitCtrl'
 	})
+	.when('/companyDetails/:param1',{
+		templateUrl: 'views/companyDetails.html',
+		controller : 'companyCtrl'
+	})
 	.when('/studentdetails',{
 		templateUrl: 'views/students.html',
 		controller : 'studentCtrl'
