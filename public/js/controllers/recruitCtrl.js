@@ -28,7 +28,9 @@ crms.controller('recruitCtrl',function ($scope, $http, $location,$window) {
 			doi: c.doi,
 			doj: c.doj,
 			year: c.year,
+			type: c.type,
 			about: c.about
+
 		};
 		$http({
 			method : 'POST',
@@ -46,6 +48,7 @@ crms.controller('recruitCtrl',function ($scope, $http, $location,$window) {
 			c.doi="";
 			c.doj="";
 			c.year="";
+			c.type="";
 			c.about="";
 		});
 	}; 

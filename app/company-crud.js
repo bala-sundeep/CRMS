@@ -26,7 +26,8 @@ var companySchema = mongoose.Schema({
 	DOJ        : String,
 	aboutCmpny : String, 
 	year       : String,
-	eligible	:Boolean      
+	eligible	:Boolean,
+	type       : String      
     });
 
 var Company = mongoose.model('Company',companySchema,'newCompany');
@@ -45,6 +46,7 @@ router.post('/add',function(req,res)
 		DOI        : req.body.doi,
 		DOJ        : req.body.doj,
 		aboutCmpny : req.body.about, 
+		type       : req.body.type,
 		year       : req.body.year
 		});
 	console.log(newCompany);
@@ -59,16 +61,16 @@ mail(to,req.body.name+' Company Recruitment',req.body.about+'\n please go throug
 });
 
 
-	nexmo.message.sendSms(
-   '918639790749', '918639790749', req.body.name+' Campus',
-    (err, responseData) => {
-     if (err) {
-     console.log(err);
-      } else {
-     onsole.dir(responseData);
-     }
-   }
-   );
+	//nexmo.message.sendSms(
+   //'918639790749', '918639790749', req.body.name+' Campus',
+    //(err, responseData) => {
+     //if (err) {
+     //console.log(err);
+      //} else {
+     //console.dir(responseData);
+     //}
+   //}
+   //);
 });
 
 router.post('/specific',function(req,res){
@@ -111,8 +113,8 @@ router.put('/updateCompany/:id',function(req,res){
 		DOI        : req.body.doi,
 		DOJ        : req.body.doj,
 		aboutCmpny : req.body.about, 
-		year       : req.body.year
-		
+		year       : req.body.year,
+		type       : req.body.type
 	}}, function(err,data){
 		console.log(data);
 		res.json(data);
