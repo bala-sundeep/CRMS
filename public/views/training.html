@@ -1,24 +1,28 @@
-
 <div class="table-responsive">
   <table class="table table-bordered" style="background-color: #fff;">
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Company Name</th>
-        <th scope="col">Team</th>
+        <th scope="col">Trainee</th>
+        <th scope="col">Duration</th>
         <th scope="col">Start Date</th>
         <th scope="col">End Date</th>
         <th scope="col">timings</th>
+        <th scope="col">topics</th>
+        <th scope="col">Feedback</th>
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat=" training in data">
         <th scope="row">{{$index+1}}</th>
-        <td>{{training.companyName|uppercase}}</td>
+
         <td>{{training.trainee}}</td>
+        <td>{{training.duration}}</td>
         <td>{{training.startDate}}</td>
         <td>{{training.endDate}}</td>
         <td>{{training.timings}}</td>
+        <td>{{training.topics}}</td>
+        <td><button class="btn btn-primary" ng-model="button" ng-click="giveFeedback(training.trainee)">Give Feedback</button></td>
       </tr>
     </tbody>
   </table>

@@ -1,0 +1,51 @@
+
+<form class="form-horizontal">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Trainee:</label>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" id="email" placeholder="Training team" name="trainingTeam" ng-model="s.trainee">
+      </div>
+    </div>
+    <div class="form-group">
+    <label class="control-label col-sm-2">Rating</label>
+    <div class="form-group">
+        <label class="control-label col-sm-2">
+            <input ng-model="s.rating" type="radio" name="feedbackrating" ng-value="1">
+              1
+        </label>
+        <label class="control-label col-sm-2">
+            <input ng-model="s.rating" type="radio" name="feedbackrating" ng-value="2">
+              2
+        </label>
+        <label class="control-label col-sm-2">
+            <input ng-model="s.rating" type="radio" name="feedbackrating" ng-value="2">
+              3
+        </label>
+<label class="control-label col-sm-2">
+            <input ng-model="s.rating" type="radio" name="feedbackrating" ng-value="2">
+              4
+        </label>
+<label class="control-label col-sm-2">
+            <input ng-model="s.rating" type="radio" name="feedbackrating" ng-value="2">
+              5
+        </label>
+
+    </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" >feedback:</label>
+        <div class="col-sm-8">          
+          <textarea class="form-control"  placeholder="feedback" name="feedback" ng-model="s.feedback"></textarea>
+        </div>
+      </div>
+
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-8">
+        <button class="btn btn-primary" ng-model="button" ng-click="submitFeedback(s)">Submit Feedback</button>
+      </div>
+    </div>
+    <strong>{{addRmsg}}</strong>
+    <div ng-show="(addRmsg.length!=0?true:false)" class="alert alert-success">
+    
+    </div>
+  </form>

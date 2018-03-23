@@ -11,14 +11,14 @@ var trainingsSchema=mongoose.Schema({
 	startDate      : String,
 	endDate        : String,
 	timings        : String,
-	topics         : String,
-	feedback       : String
+	topics         : String
 
 });
 var t=mongoose.model('trainings',trainingsSchema);
 module.exports=router;
 router.get('/alltraining',function(req,res)
 {
+	
 	t.find({},function(err,docs1){
 		res.json(docs1);
 
@@ -34,7 +34,9 @@ var newTraining=new t({
     'timings'  :req.body.timings
 } ) ; 
 newTraining.save(function(err, docs){
-    if(err) throw err;
+    if(err) {
+    	throw err;
+}
     console.log('Saved');
     res.json(docs); 
 });

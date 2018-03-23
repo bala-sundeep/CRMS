@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 var jwt    = require('jsonwebtoken');
 var config = require('./config');
 var promise=require('bluebird');
-var Student   = require(__dirname+'/models/studentSchema');
+var Student   = require(__dirname+'/student');
 var applicationSchema = mongoose.Schema({
 	companyId  : String,
 	// studentId  : String, 

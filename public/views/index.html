@@ -26,6 +26,7 @@
     <script type="text/javascript" src="js/controllers/statusCtrl.js"></script>
     <script type="text/javascript" src="js/controllers/trainingCtrl.js"></script>
     <script type="text/javascript" src="js/controllers/companyCtrl.js"></script>
+    <script type="text/javascript" src="js/controllers/feedbackCtrl.js"></script>
     <script type="text/javascript" src="js/appRoutes.js"></script>
     <!-- reports -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
@@ -61,6 +62,11 @@
                     </li>
                     <li >
                         <a href="/addRecruiter"><i class="fa fa-share-alt" aria-hidden="true"></i> Suggest</a>
+                    </li>
+                    <li class='{{(loc=="/index"?"active":"")}}'>
+                        <a href="/getList"><i class="fa fa-share-alt" aria-hidden="true"></i> List</a>
+                    <li class='{{(loc=="/index"?"active":"")}}'>
+                        <a href="/addTraining"><i class="fa fa-share-alt" aria-hidden="true"></i> Add Training</a>
                     </li>
                     
                 </ul>

@@ -17,6 +17,10 @@ angular.module('appRoutes',[])
 		templateUrl: 'views/companyDetails.html',
 		controller : 'companyCtrl'
 	})
+	.when('/addFeedback/:param1',{
+		templateUrl: 'views/addFeedback.html',
+		controller : 'feedbackCtrl'
+	})
 	.when('/studentdetails',{
 		templateUrl: 'views/students.html',
 		controller : 'studentCtrl'
@@ -41,6 +45,14 @@ angular.module('appRoutes',[])
 	.when('/update',{
 		templateUrl:'views/update.html',
 	controller:'profileCtrl'
+	})
+	.when('/getList',{
+		templateUrl:'views/list.html',
+		controller: 'recruitCtrl'
+	})
+	.when('/addTraining',{
+		templateUrl:'views/addTraining.html',
+	controller:'trainingCtrl'
 	})
 	.when('/status',{
 		templateUrl:'views/status.html',

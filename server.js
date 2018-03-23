@@ -17,7 +17,7 @@ mongoose.connect(dbHost,function(err){
 //middleware
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json({}));
-
+app.locals.dir=__dirname;
 app.use(express.static(__dirname+'/public'));
 app.use(express.static(__dirname+'/public/students14'));
 app.get(['/','/login'],function(req,res){
@@ -43,9 +43,15 @@ app.use(function(req, res, next) {
 
 
 var company = require('./app/company-crud');
+var training=require('./app/trainings');
 var student = require('./app/student-crud');
+var application = require('./app/application');
+var feedback= require('./app/feedback');
 app.use('/company',company);
 app.use('/student',student);
+app.use('/apply',application);
+app.use('/training',training);
+app.use('/feedback',feedback);
 app.get('/index',function(req,res){
 	res.sendFile(__dirname+'/public/views/index.html');
 });

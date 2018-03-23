@@ -12,8 +12,22 @@ crms.controller('recruitCtrl',function ($scope, $http, $location,$window) {
 		console.log('err');
 	});
 
-	$scope.showCompany = function(name){
+	
+    $scope.showCompany = function(name){
 		$window.location.href="http://localhost:3000/companyDetails/:"+name;
+}
+
+	$scope.getList = function(){
+		console.log($scope.companyList);
+		$http({
+		method: 'GET',
+		url   : '/apply/all',
+		params: {'cid':$scope.companyList}
+		}).then(function(response){
+				$scope.applicants=response.data;
+			},function(err){
+				console.log('err');
+			});
 	}
 
 	$scope.addCompany = function(c){

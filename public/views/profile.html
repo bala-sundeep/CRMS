@@ -11,12 +11,14 @@
         </style>
     </head>
     <body>
-            <div class="card" style="width:1000px;height:500px;position:relative;">
-                <img width:"100px"; height: "100px"; class="card-img-top" src="http://localhost:3000/public/students14/14241a05c7.jpg" alt="{{data.regNumber}}" height=100px width=100px></img>
-                <h5 class="card-title">{{data.regNumber}}</h5>
+            <div  class="card-img-top" style="width:150px;height:150px;position:relative;">
+        <img  data-ng-src="data:image/png;base64,{{str}}" height=150px width=150px style="position:absolute;top:3%;left:80%;"></img>
+</div>
+<div style="width:30px;height:30px;position:relative"></div>
                     <div class="card-body"><center>
-                            <table border=0 padding="5px" width=100% style="margin-left:100px; text-align:left;">
+                  <h4>           <table border=0 padding="5px" width=100% style="margin-left:100px; text-align:left;">
                                     <tr><td class="h">FULL NAME :</td><td class="d">{{data.studentName}}</td></tr>
+                                    <tr><td class="h">REGISTRATION ID :</td><td class="d">{{data.regNumber}}</td></tr>
                                     <tr><td class="h">FATHER'S NAME :</td><td class="d">{{data.fName}}</td></tr>
                                     <tr><td class="h">MOBILE NO :</td><td class="d">{{data.mobileNo}}</td></tr>
                                     <tr><td class="h">EMAIL :</td><td class="d">{{data.email}}</td></tr>
@@ -28,9 +30,7 @@
                                     <tr><td class="h">BTECH % :</td><td class="d">{{data.current}}</td></tr>
                                     <tr><td class="h">NO OF BACKLOGS :</td><td class="d">{{data.nBclog}}</td></tr>
                                     <tr><td class="h">PROJECT :</td><td class="d">{{data.project}}</td></tr>
-                                    </table></center>
-                    <a href='/update'id="a" style="position:absolute;float:right;" class="btn btn-primary">Update</a>
-                    </div>
-                  </div>
+    <tr><td><a href='/update' id="a" style="display:inline-block;height:40px;width:90px;background-color:indianred;padding:5px;font-style:bold;color:white;font-size:20px;">update</a></td></tr>
+        </table>{{image}}</h4>
     </body>
 </html>
