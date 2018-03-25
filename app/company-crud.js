@@ -81,6 +81,7 @@ router.post('/specific',function(req,res){
 		});
 });
 
+
 router.get('/all',function(req,res){
 	
 	Company.find({},function(err,docs){

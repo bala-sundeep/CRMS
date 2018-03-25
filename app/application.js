@@ -11,7 +11,7 @@ var Student   = require(__dirname+'/student');
 var applicationSchema = mongoose.Schema({
 	companyId  : String,
 	// studentId  : String, 
-	studentId: [{ type: mongoose.Schema.Types.ObjectId, ref: 'students' }]
+	studentId: String
 });
 
 var application = mongoose.model('Application',applicationSchema,'newApplication');
@@ -29,9 +29,12 @@ function pfunction(input){
 }
 router.get('/all',function(req,res){
 	var records=new Array();
-	application.find({'companyId': req.query.cid}).populate('studentId').exec(function(err,user){
+	application.find({'companyId': req.query.cid},{studentId:1,_id:0}).exec(
+	function(err,user){
+console.log(user);
+res.json(user);
+		//console.log(err, JSON.stringify(user));
 
-		console.log(err, JSON.stringify(user));
 	})
 });
 
@@ -74,16 +77,21 @@ router.get('/all',function(req,res){
 });*/
 
 router.post('/new',function(req,res) {
-	console.log(req.body.cid);
+		console.log(req.query.name);
+	var d=jwt.decode(req.cookies.mytok,config.secret);
 	var newApplication = new application({
-		companyId : req.body.cid,
-		studentId : req.rollno,
+		companyId : req.query.name,
+		studentId : d.admin
 	});
 	//console.log(newCompany);
 	newApplication.save(function(err, docs){
-		if(err) throw err;
-		console.log('Saved');
-		res.json(docs);
+		if(err) {
+         console.log(err);
+			throw err;
+		}
+		console.log("saved");
+	res.sendStatus(200);
 	});
 });
+
 module.exports = router;

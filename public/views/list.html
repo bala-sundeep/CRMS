@@ -1,10 +1,16 @@
 <div class="form-group">
   <label for="sel1">Select Company:</label>
-  <select ng-model="companyList" class="form-control" id="sel1">
-    <option ng-repeat="x in companies">{{x}}</option>
+  <select ng-model="selectedcompany" class="form-control" id="sel1">
+    <option ng-repeat="x in companyList">{{x.companyName}}</option>
   </select>
   <button style="display:inline-block;background-color:indianred;padding:5px;font-style:italic;color:white;font-size:20px;" ng-click="getList()">Get List</button>
 </div>
 <div>
-	<p ng-repeat="x in applicants">{{x}}</p>
+	<table   class="table table-bordered">
+
+	<tr ng-repeat="x in applicants">
+	     <th>{{$index+1}}</th>
+		<td>{{x.studentId}}</td>
+	</tr>
+</table>
 </div>

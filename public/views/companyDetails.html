@@ -1,7 +1,5 @@
 <div class="card" style="width:1000px;height:500px;position:relative;">
-    <img width:"100px"; height: "100px"; class="card-img-top" src="http://localhost:3000/public/students14/14241a05c7.jpg" alt="{{data.regNumber}}" height=100px width=100px></img>
-    <h5 class="card-title">{{data.regNumber}}</h5>
-        <div class="card-body"><center>
+            <div class="card-body"><center>
                 <table border=0 padding="5px" width=100% style="margin-left:100px; text-align:left;">
                         <tr><td class="h">COMPANY NAME :</td><td class="d">{{company.companyName}}</td></tr>
                         <tr><td class="h">COMPANY LOCATION :</td><td class="d">{{company.companyLoc}}</td></tr>
@@ -11,10 +9,13 @@
                         <tr><td class="h">EXAM PATTERN :</td><td class="d">{{company.examPattern}}</td></tr>
                         <tr><td class="h">DOI :</td><td class="d">{{company.DOI}}</td></tr>
                         <tr><td class="h">DOJ :</td><td class="d">{{company.DOJ}}</td></tr>
-                        <tr><td class="h">ABOUT COMPNAY :</td><td class="d">{{company.aboutCmpny}}</td></tr>
+                        <tr><td class="h">ABOUT COMPANY :</td><td class="d">{{company.aboutCmpny}}</td></tr>
                         <tr><td class="h">Type :</td><td class="d">{{company.type}}</td></tr>
                         <tr><td class="h">YEAR :</td><td class="d">{{company.year}}</td></tr>
                         </table></center>
-        <a href='/#' style="position:absolute;float:right;" class="btn btn-primary">Apply</a>
+        <button ng-model="button" class="btn btn-primary" ng-click="applyCompany(company.companyName)">Apply</button>
+</div>
+<div>
+        <strong>{{addRmsg}}</strong>
         </div>
-      </div>
+</div>

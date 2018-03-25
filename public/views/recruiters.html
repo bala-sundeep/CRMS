@@ -26,7 +26,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat=" company in data">
+    <tr ng-repeat=" company in companyList">
       <th scope="row">{{$index+1}}</th>
       <td>{{company.companyName|uppercase}}</td>
       <td>{{company.CTC|currency:'₹ '}}L</td>
@@ -35,7 +35,9 @@
       <td>{{company.domain}}</td>
       <td>{{company.companyLoc}}</td>
       <td>{{company.type}}</td>
-      <td><button id="a1" ng-model="button" class="btn btn-primary" ng-click="showCompany(company.companyName)" ng-disabled="!{{company.eligible}}">Apply</button></td>
+      <td>
+        <button id="a1" ng-model="button" class="btn btn-primary" ng-click="showCompany(company.companyName)" ng-disabled="!{{company.eligible}}">Apply</button>
+      </td>
     </tr>
   </tbody>
 </table>

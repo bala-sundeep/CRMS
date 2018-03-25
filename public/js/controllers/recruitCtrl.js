@@ -1,34 +1,37 @@
 crms.controller('recruitCtrl',function ($scope, $http, $location,$window) {
 	$scope.name="";
 	$scope.addRmsg="";
-
+	$scope.companyList=[];
+	$scope.applicants=[];
+    $scope.selectedcompany="";
 	/* HTTP */
+
 	$http({
 		method: 'GET',
 		url   : '/company/all'
 	}).then(function(response){
-		$scope.data=response.data;
-	},function(err){
+		$scope.companyList=response.data;
+		},function(err){
 		console.log('err');
 	});
 
 	
     $scope.showCompany = function(name){
 		$window.location.href="http://localhost:3000/companyDetails/:"+name;
-}
+};
 
 	$scope.getList = function(){
-		console.log($scope.companyList);
+		console.log($scope.selectedcompany);
 		$http({
 		method: 'GET',
 		url   : '/apply/all',
-		params: {'cid':$scope.companyList}
+		params: {'cid':$scope.selectedcompany}
 		}).then(function(response){
 				$scope.applicants=response.data;
 			},function(err){
-				console.log('err');
+				console.log("error occured");
 			});
-	}
+	};
 
 	$scope.addCompany = function(c){
 		console.log('hi');
