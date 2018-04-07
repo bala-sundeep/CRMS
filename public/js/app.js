@@ -2,6 +2,14 @@ var crms = angular.module('crms',['ngRoute','appRoutes']);
 
 
 crms.controller('crmsCtrl',function ($scope,$http,$rootScope,$location,$window) {
+	$http({
+		method: "GET",
+		url : '/isAdmin'
+	}).then((response)=>{
+		$scope.isAdmin = response.data.isAdmin;
+	}),function(err){
+		alert('something went wrong');
+	}
 
 	$rootScope.loc=$location.url();
 	

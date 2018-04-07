@@ -15,7 +15,7 @@ crms.controller('validateUser',function ($scope, $http, $location,$window) {
 		}).then(function(response){
             login.roll="";
             login.password="";
-            $window.location.href="http://localhost:3000/index"  ;
+            $window.location.href="http://localhost:3000/recruiters"  ;
            //$http.get('/index');
           /* $http({
                method:'GET',

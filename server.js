@@ -40,7 +40,14 @@ app.use(function(req, res, next) {
 	else
 	res.redirect("http://localhost:3000/");
 });
-
+app.get('/isAdmin',(req,res)=>{
+	let mytoken=req.cookies.mytok;
+		mytoken=jwt.verify(mytoken,config.secret);
+	Student.findOne({'regNumber':mytoken.admin},'isAdmin',function(err,user){
+		if(err) throw err;
+		else res.send(user);
+	});
+})
 
 var company = require('./app/company-crud');
 var training=require('./app/trainings');

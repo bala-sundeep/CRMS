@@ -57,10 +57,6 @@ angular.module('appRoutes',[])
 	.when('/status',{
 		templateUrl:'views/status.html',
 	controller:'statusCtrl'
-	})
-	.otherwise('/recruiters',{
-		templateUrl:'views/recruiters.html',
-	controller:'recruitCtrl'
 	});
 	
 	$locationProvider.html5Mode(true);

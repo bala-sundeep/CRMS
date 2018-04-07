@@ -21,6 +21,7 @@ module.exports = mongoose.model('students', new Schema({
 	email      :String,
 	fName      :String,
 	section     :String,
-	address     :String
+	address     :String,
+	isAdmin		: {type:Boolean, default:false}
 })
 );

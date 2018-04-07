@@ -45,27 +45,27 @@
 
                 <ul class="list-unstyled components">
                     <p>Dashboard</p>
-                    <li class='{{(loc=="/recruiters"?"active":"")}}'>
+                    <li class='{{(loc=="/recruiters"?"active":"")}}' ng-hide="isAdmin">
                         <a href="/recruiters"><i class="fa fa-university" aria-hidden="true"></i> Recruiters</a>
                     </li>
-                    <li>
+                    <li ng-hide="isAdmin">
                         <a href="/trainings"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Training</a>
                     </li>
-                     <li>
+                     <li ng-show="isAdmin">
                         <a href="/studentdetails"><i class="fa fa-question-circle" aria-hidden="true"></i> Inquiry</a>
                     </li>
-                    <li>
+                    <li ng-hide="isAdmin">
                         <a href="/profile"><i class="fa fa-user-circle-o" aria-hidden="true"></i> My Profile</a>
-                    </li>
-                    <li>
-                        <a href="/status"><i class="fa fa-hand-o-right" aria-hidden="true"></i></i> Placement Status</a>
-                    </li>
+                    </li ng-show="isAdmin">
                     <li >
+                        <a href="/status"><i class="fa fa-hand-o-right" aria-hidden="true"></i></i> Placement Status</a>
+                    </li >
+                    <li ng-show="isAdmin">
                         <a href="/addRecruiter"><i class="fa fa-share-alt" aria-hidden="true"></i> Suggest</a>
                     </li>
-                    <li >
+                    <li ng-show="isAdmin">
                         <a href="/getList"><i class="fa fa-share-alt" aria-hidden="true"></i> List</a>
-                    <li >
+                    <li ng-show="isAdmin">
                         <a href="/addTraining"><i class="fa fa-share-alt" aria-hidden="true"></i> Add Training</a>
                     </li>
                     

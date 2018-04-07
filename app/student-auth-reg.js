@@ -23,7 +23,7 @@ router.post('/authenticate',function(req,res){
 			}
 			else{
 				var payload = {
-					admin: user.regNumber	
+					admin: user.regNumber
 				}
 				var token = jwt.sign(payload, config.secret);
 				var t=res.cookie('mytok',token);
