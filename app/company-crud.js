@@ -27,10 +27,10 @@ var companySchema = mongoose.Schema({
 	aboutCmpny : String, 
 	year       : String,
 	eligible   :Boolean,
-	ssc			: String,
-	inter		: String,
-	btech		: String,
-	bcount		: String,
+	ssc			: Number,
+	inter		: Number,
+	btech		: Number,
+	bcount		: Number,
 	type       : String      
     });
 
@@ -91,14 +91,14 @@ router.post('/specific',function(req,res){
 
 
 router.get('/all',function(req,res){
-	
 	Company.find({},function(err,docs){
 		var d=jwt.decode(req.cookies.mytok,config.secret);
 		Student.findOne({regNumber:d.admin},function(err,user){
 		if(err) throw err;
 		for(var i=0;i<docs.length;i++){
-			if((docs[i]['CTC']-user['package']>4))
+			if((docs[i]['CTC']-user['package']>4)&&(docs[i]['ssc']<=user['ssc'])&&(docs[i]['inter']<=user['inter'])&&(docs[i]['btech']<=user['current'])&&(docs[i]['bcount']>=user['nBclog']))
 			docs[i].eligible="true";
+			
 			else
 			docs[i].eligible="false";
 		}

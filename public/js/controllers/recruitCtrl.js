@@ -11,6 +11,7 @@ crms.controller('recruitCtrl',function ($scope, $http, $location,$window) {
 		url   : '/company/all'
 	}).then(function(response){
 		$scope.companyList=response.data;
+		console.log($scope.companyList);
 		},function(err){
 		console.log('err');
 	});
