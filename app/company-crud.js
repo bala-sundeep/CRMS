@@ -26,7 +26,11 @@ var companySchema = mongoose.Schema({
 	DOJ        : String,
 	aboutCmpny : String, 
 	year       : String,
-	eligible	:Boolean,
+	eligible   :Boolean,
+	ssc			: String,
+	inter		: String,
+	btech		: String,
+	bcount		: String,
 	type       : String      
     });
 
@@ -47,7 +51,11 @@ router.post('/add',function(req,res)
 		DOJ        : req.body.doj,
 		aboutCmpny : req.body.about, 
 		type       : req.body.type,
-		year       : req.body.year
+		year       : req.body.year,
+		ssc		   : req.body.ssc,
+		inter	   : req.body.inter,
+		btech	   : req.body.btech,
+		bcount     : req.body.backlogcount
 		});
 	console.log(newCompany);
 	newCompany.save(function(err, docs){

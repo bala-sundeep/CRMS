@@ -46,7 +46,11 @@ crms.controller('recruitCtrl',function ($scope, $http, $location,$window) {
 			doj: c.doj,
 			year: c.year,
 			type: c.type,
-			about: c.about
+			about: c.about,
+			ssc : c.ssc,
+			inter: c.inter,
+			btech : c.btech,
+			backlogcount: c.nbcklogs
 
 		};
 		$http({
